@@ -8,7 +8,7 @@ public class BulletController : MonoBehaviour
 
     [SerializeField] private Rigidbody2D _rb;
 
-    [SerializeField] private Vector2 _moveDir;
+    public Vector2 _moveDir;
 
 
     // Update is called once per frame

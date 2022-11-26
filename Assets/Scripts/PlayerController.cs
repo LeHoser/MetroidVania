@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
 
     public Animator anim;
 
+    public BulletController shotToFire;
+    public Transform shotPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         CharacterMove();
 
-        
+        PlayerFire();
     }
 
     void CharacterMove()
@@ -52,5 +55,13 @@ public class PlayerController : MonoBehaviour
 
         anim.SetBool("IsGrounded", _isGrounded);
         anim.SetFloat("speed", Mathf.Abs(_rb.velocity.x));
+    }
+
+    void PlayerFire()
+    {
+        if(Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(shotToFire, shotPoint.position, shotPoint.rotation)._moveDir = new Vector2(transform.localScale.x, 0);
+        }
     }
 }
