@@ -8,6 +8,8 @@ public class BulletController : MonoBehaviour
 
     [SerializeField] private Rigidbody2D _rb;
 
+    [SerializeField] private GameObject _impactEffect;
+
     public Vector2 _moveDir;
 
 
@@ -21,5 +23,7 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Destroy(this.gameObject);
+
+        Instantiate(_impactEffect, transform.position, Quaternion.identity);
     }
 }
