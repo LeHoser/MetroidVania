@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public BulletController shotToFire;
     public Transform shotPoint;
 
+    [SerializeField] private float _coyoteTime = 0.2f;
+    private float _coyoteTimeCounter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,15 @@ public class PlayerController : MonoBehaviour
     {
         _rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * _moveSpeed, _rb.velocity.y);
 
+        if(_isGrounded == true)
+        {
+            _coyoteTimeCounter = _coyoteTime;
+        }
+        else
+        {
+            _coyoteTimeCounter -= Time.deltaTime;
+        }
+
         if(_rb.velocity.x < 0)
         {
             transform.localScale = new Vector3(-1, 1f, 1f);
@@ -48,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, .2f, whatIsGround);
 
-        if(Input.GetButtonDown("Jump") && _isGrounded == true)
+        if(Input.GetButtonDown("Jump") && _coyoteTimeCounter > 0f)
         {
             _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
         }
