@@ -84,6 +84,8 @@ public class PlayerController : MonoBehaviour
             else
             {
                 _canDoubleJump = false;
+
+                anim.SetTrigger("doubleJump");
             }
             
             _jumpBufferCounter = 0f;
