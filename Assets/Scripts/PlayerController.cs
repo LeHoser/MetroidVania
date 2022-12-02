@@ -75,19 +75,21 @@ public class PlayerController : MonoBehaviour
 
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, .2f, whatIsGround);
 
-        if(_coyoteTimeCounter > 0f && _jumpBufferCounter > 0f && !_isJumping)
+        if(_coyoteTimeCounter > 0f && _jumpBufferCounter > 0f && !_isJumping || _canDoubleJump == true && _coyoteTime > 0f && _jumpBufferCounter > 0f)
         {
-            //_canDoubleJump = true;
-            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
-            if(_isJumping == true)
+            if (_isGrounded)
             {
-                _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
+                _canDoubleJump = true;
+            }
+            else
+            {
                 _canDoubleJump = false;
             }
-
+            
             _jumpBufferCounter = 0f;
 
             StartCoroutine(JumpCooldown());
+            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
         }
         
         anim.SetBool("IsGrounded", _isGrounded);
