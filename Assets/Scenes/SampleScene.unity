@@ -2046,6 +2046,7 @@ MonoBehaviour:
   anim: {fileID: 209939851}
   shotToFire: {fileID: -5980841120582185248, guid: f8565dd90ec032b4e84b518ddcf4965f, type: 3}
   shotPoint: {fileID: 1861888597}
+  _coyoteTime: 0.2
 --- !u!1 &1089689941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,7 +2174,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861888596}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.16, y: 0.38, z: 0.43658242}
+  m_LocalPosition: {x: 1.4, y: 0.35, z: 0.43658242}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
