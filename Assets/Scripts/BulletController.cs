@@ -12,6 +12,8 @@ public class BulletController : MonoBehaviour
 
     public Vector2 _moveDir;
 
+    [SerializeField] private int _damageAmount = 1;
+
 
     // Update is called once per frame
     void Update()
@@ -22,6 +24,11 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.tag == "Enemy")
+        {
+            other.GetComponent<EnemyController>().DamageEnemy(_damageAmount);
+        }
+
         Destroy(this.gameObject);
 
         Instantiate(_impactEffect, transform.position, Quaternion.identity);
